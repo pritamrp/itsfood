@@ -19,7 +19,7 @@ def generate_response(input_text):
         "You are an expert in regulatory compliance for food products.Your task is to list the ingredients and their quantities for a given product as per regulatory standards. Please ensure the response includes only the ingredient names and their exact quantities, without any additional information or descriptions. "
         "Here's what the user wants: " + input_text
     )
-    llm = OpenAI(temperature=0.7, openai_api_key='openai_api_key')
+    llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
     response = llm(prompt)
     st.info(response)
 
