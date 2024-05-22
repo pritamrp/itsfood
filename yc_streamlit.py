@@ -7,12 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1-UbpFp79RctVXWvUf4oNQza4k2XfenOM
 """
 
-pip install streamlit openai langchain
-
-pip install -U langchain-community
-
-pip install langchain-community langchain-core
-
 import streamlit as st
 from langchain.llms import OpenAI
 
@@ -25,16 +19,14 @@ def generate_response(input_text):
         "You are an expert in regulatory compliance for food products.Your task is to list the ingredients and their quantities for a given product as per regulatory standards. Please ensure the response includes only the ingredient names and their exact quantities, without any additional information or descriptions. "
         "Here's what the user wants: " + input_text
     )
-    llm = OpenAI(temperature=0.7, openai_api_key='sk-proj-EfNnl35Tbhq7nsjNxzERT3BlbkFJ4ItbCSTEepGLOsdBayNg')
+    llm = OpenAI(temperature=0.7, openai_api_key='openai_api_key')
     response = llm(prompt)
     st.info(response)
 
 with st.form('my_form'):
-    text = st.text_area('Enter text:', 'Lets Get you some food?')
+    text = st.text_area('Enter text:', 'Let's Get you some food')
     submitted = st.form_submit_button('Submit')
     if not openai_api_key.startswith('sk-'):
         st.warning('Please enter your OpenAI API key!', icon='⚠')
     if submitted and openai_api_key.startswith('sk-'):
         generate_response(text)
-
-generate_response('I am feeling tired')
